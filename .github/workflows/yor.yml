@@ -1,6 +1,7 @@
 name: IaC tag and trace
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
