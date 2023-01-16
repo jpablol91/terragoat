@@ -66,3 +66,15 @@ resource "aws_s3_bucket_replication_configuration" "dockingbay" {
     }
   }
 }
+
+
+resource "aws_s3_bucket" "dockingbay_log_bucket" {
+  bucket = "dockingbay-log-bucket"
+}
+
+resource "aws_s3_bucket_logging" "dockingbay" {
+  bucket = aws_s3_bucket.dockingbay.id
+
+  target_bucket = aws_s3_bucket.dockingbay_log_bucket.id
+  target_prefix = "log/"
+}
